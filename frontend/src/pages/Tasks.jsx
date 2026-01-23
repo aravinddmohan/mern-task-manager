@@ -4,6 +4,8 @@ import API from "../api/axios";
 export default function Tasks({ setToken }) {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [editTitle, setEditTitle] = useState("");
 
   const fetchTasks = async () => {
     const res = await API.get("/tasks");
@@ -11,6 +13,7 @@ export default function Tasks({ setToken }) {
   };
 
   const addTask = async () => {
+    if (!title) return;
     await API.post("/tasks", { title });
     setTitle("");
     fetchTasks();
@@ -18,6 +21,18 @@ export default function Tasks({ setToken }) {
 
   const deleteTask = async (id) => {
     await API.delete(`/tasks/${id}`);
+    fetchTasks();
+  };
+
+  const startEdit = (task) => {
+    setEditId(task._id);
+    setEditTitle(task.title);
+  };
+
+  const updateTask = async (id) => {
+    await API.put(`/tasks/${id}`, { title: editTitle });
+    setEditId(null);
+    setEditTitle("");
     fetchTasks();
   };
 
@@ -36,14 +51,31 @@ export default function Tasks({ setToken }) {
 
       <h2>My Tasks</h2>
 
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input
+        placeholder="New task"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <button onClick={addTask}>Add</button>
 
       <ul>
-        {tasks.map((t) => (
-          <li key={t._id}>
-            {t.title}
-            <button onClick={() => deleteTask(t._id)}>❌</button>
+        {tasks.map((task) => (
+          <li key={task._id}>
+            {editId === task._id ? (
+              <>
+                <input
+                  value={editTitle}
+                  onChange={(e) => setEditTitle(e.target.value)}
+                />
+                <button onClick={() => updateTask(task._id)}>Save</button>
+              </>
+            ) : (
+              <>
+                {task.title}
+                <button onClick={() => startEdit(task)}>✏️</button>
+                <button onClick={() => deleteTask(task._id)}>❌</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
