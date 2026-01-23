@@ -1,72 +1,74 @@
-🚀 MERN Task Manager
+# 🚀 MERN Task Manager
 
-A simple MERN stack task manager with authentication and CRUD functionality.
-Built as part of a technical assessment to demonstrate backend + frontend integration.
+A full-stack **Task Management Application** built using the **MERN stack (MongoDB, Express, React, Node.js)**.  
+This project demonstrates authentication, authorization, and CRUD operations with clean frontend–backend integration.
 
-✨ Features
+---
 
-User Registration & Login
+## ✨ Features
 
-JWT Authentication
+- User Registration & Login  
+- JWT-based Authentication  
+- Protected Routes  
+- Create, Read, Update, Delete (CRUD) Tasks  
+- Tasks are user-specific  
+- Secure password hashing  
+- Clean and minimal UI  
 
-Protected Routes
+---
 
-Create / Read / Update / Delete Tasks
+## 🛠 Tech Stack
 
-Each task belongs to a user
+### Frontend
+- React (Vite)
+- Axios
+- CSS
 
-MongoDB database
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcrypt
 
-Clean and simple UI
+---
 
-🛠 Tech Stack
 
-Frontend
-
-React (Vite)
-
-Axios
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB
-
-JWT Authentication
-
-📁 Project Structure
+## 📁 Project Structure
 mern-task-manager/
 │
 ├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── config/
-│   └── server.js
+│ ├── controllers/
+│ ├── models/
+│ ├── routes/
+│ ├── middleware/
+│ ├── config/
+│ └── server.js
 │
 ├── frontend/
-│   ├── src/
-│   ├── pages/
-│   ├── api/
-│   └── main.jsx
+│ ├── src/
+│ │ ├── pages/
+│ │ ├── api/
+│ │ └── main.jsx
+│ └── index.html
 │
 └── README.md
 
-⚙️ Setup Instructions
-1️⃣ Clone Repository
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the Repository
+
 git clone https://github.com/YOUR_USERNAME/mern-task-manager.git
 cd mern-task-manager
 
 2️⃣ Backend Setup
 cd backend
 npm install
-
-
-Create .env file:
+Create a .env file:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
@@ -81,53 +83,70 @@ cd frontend
 npm install
 npm run dev
 
+
+Frontend runs on:
+
+http://localhost:5173
+
+
+Backend runs on:
+
+http://localhost:5000
+
 🔐 API Endpoints
-Auth
-Method	Route	Description
+Auth Routes
+Method	Endpoint	Description
 POST	/api/users/register	Register user
 POST	/api/users/login	Login user
-Tasks
-Method	Route	Description
+Task Routes
+Method	Endpoint	Description
 GET	/api/tasks	Get all tasks
 POST	/api/tasks	Create task
 PUT	/api/tasks/:id	Update task
 DELETE	/api/tasks/:id	Delete task
-🧪 Sample Test User
-Email: arjun.dev@gmail.com
-Password: Arjun@123
+🧪 Sample Test Credentials
+Email: aravind@test.com
+Password: 123456
 
 ✅ Features Implemented
 
-✔ JWT Authentication
-✔ Protected Routes
-✔ CRUD Operations
-✔ MongoDB Integration
-✔ Axios API Handling
-✔ Clean Code Structure
+JWT Authentication
+
+Secure Password Hashing
+
+Protected Routes
+
+Full CRUD Operations
+
+MongoDB Integration
+
+Axios for API Calls
+
+Clean Project Structure
 
 📌 Notes
 
-Passwords are hashed using bcrypt
+JWT token is stored in localStorage
 
-JWT is stored in localStorage
+Passwords are encrypted using bcrypt
 
 Routes are protected using middleware
 
-Designed for learning & assessment purposes
+Built for learning and assessment purposes
 
 👨‍💻 Author
 
-Your Name
+Aravind Mohan
 MERN Stack Developer
 
 ⭐ Final Note
 
 This project demonstrates:
 
-Full-stack development
+Backend API development
 
-Authentication handling
+Authentication & Authorization
 
-REST API integration
+Frontend–Backend integration
 
-Clean React structure
+Clean and scalable project structure
