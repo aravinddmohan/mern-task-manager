@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require ("mongoose");
 const cors = require ("cors");
 const connectDB = require("./config/connectDB");
 require("dotenv").config();
@@ -19,7 +18,7 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 
-//Test Route
+//Test route
 app.get("/",(req,res)=>{
     res.send("API is running");
 });

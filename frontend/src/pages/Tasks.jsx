@@ -36,6 +36,17 @@ export default function Tasks({ setToken }) {
     fetchTasks();
   };
 
+  const toggleStatus = async (task) => {
+    const newStatus =
+      task.status === "completed" ? "pending" : "completed";
+
+    await API.put(`/tasks/${task._id}`, {
+      status: newStatus,
+    });
+
+    fetchTasks();
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     setToken(null);
@@ -71,7 +82,19 @@ export default function Tasks({ setToken }) {
               </>
             ) : (
               <>
-                {task.title}
+                <span
+                  style={{
+                    textDecoration:
+                      task.status === "completed" ? "line-through" : "none",
+                  }}
+                >
+                  {task.title}
+                </span>
+
+                <button onClick={() => toggleStatus(task)}>
+                  {task.status === "completed" ? "↩" : "✔"}
+                </button>
+
                 <button onClick={() => startEdit(task)}>✏️</button>
                 <button onClick={() => deleteTask(task._id)}>❌</button>
               </>
