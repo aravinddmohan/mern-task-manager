@@ -25,7 +25,20 @@ export default function Register({ setPage }) {
       <input type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
 
       <button>Register</button>
-      <p onClick={() => setPage("login")}>Already have account? Login</p>
+      <p>
+  Already have account?{" "}
+  <span
+    onClick={() => setPage("login")}
+    style={{
+      color: "blue",
+      cursor: "pointer",
+      textDecoration: "underline",
+    }}
+  >
+    Login
+  </span>
+</p>
+
     </form>
   );
 }

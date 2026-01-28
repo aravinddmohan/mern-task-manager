@@ -22,7 +22,15 @@ export default function Login({ setToken, setPage }) {
       <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 
       <button>Login</button>
-      <p onClick={() => setPage("register")}>New user? Register</p>
+      <p> New user?{" "}
+        <span onClick={() => setPage("register")}
+      style={{
+      color: "blue",
+      cursor: "pointer",
+      textDecoration: "underline",
+    }}>Register
+    </span>
+    </p>
     </form>
   );
 }
